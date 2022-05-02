@@ -77,6 +77,21 @@ class ViewController: UIViewController {
         // good 4: clean resources that VC has allocated and ARC can't free
         // Keep in mind that just because a VC is no longer visible, doesn’t mean that it has been deallocated. Container view controllers such as NavigationController can keep their VCs available in memory. Keep in mind that even though a VC is off-screen, if it is still in memory, it still works normally and can receive notifications.
     }
+}
+
+extension ViewController {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // when? the memory starts to fill up
+        // must remove some objects from the memory
+    }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        // when? interface orientation changes, UIKit calls this function on window of root VC
+        // then, root VC notifies all child VCs
+        // size parameter consists new size of container’s view
+        // coordinator parameter consists data that describe new orientation
+    }
 }
 
